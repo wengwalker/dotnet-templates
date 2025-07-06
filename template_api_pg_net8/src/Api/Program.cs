@@ -1,5 +1,5 @@
-using Api.Application.Commands.AddItem;
 using Api.Infrastructure.Data.Contexts;
+using Api.Infrastructure.MediatR.Extensions;
 using Microsoft.EntityFrameworkCore;
 
 var builder = WebApplication.CreateBuilder(args);
@@ -15,7 +15,9 @@ builder.Services.AddDbContext<ItemsDbContext>(x => x
     .EnableSensitiveDataLogging()
     .EnableDetailedErrors());
 
-builder.Services.AddMediatR(x => x.RegisterServicesFromAssemblyContaining(typeof(AddItemCommand)));
+builder.Services.AddMediator();
+
+//builder.Services.AddMediatR(x => x.RegisterServicesFromAssemblyContaining(typeof(AddItemCommand)));
 
 var app = builder.Build();
 

@@ -1,5 +1,5 @@
-﻿using MediatR;
+﻿using Api.Infrastructure.MediatR.Interfaces;
 
 namespace Api.Application.Queries.GetItems;
 
-public record GetItemsQuery() : IRequest<GetItemsQueryResponse>;
+public class GetItemsQuery : IRequest<GetItemsQueryResponse>;

@@ -1,6 +1,6 @@
 ﻿using Api.Domain.Entities;
 using Api.Infrastructure.Data.Contexts;
-using MediatR;
+using Api.Infrastructure.MediatR.Interfaces;
 
 namespace Api.Application.Commands.AddItem;
 
@@ -13,7 +13,7 @@ public sealed class AddItemCommandHandler : IRequestHandler<AddItemCommand, AddI
         _context = context;
     }
 
-    public async Task<AddItemCommandResponse> Handle(AddItemCommand request, CancellationToken cancellationToken)
+    public Task<AddItemCommandResponse> Handle(AddItemCommand request, CancellationToken cancellationToken)
     {
         var newItem = new ItemEntity
         {
@@ -23,10 +23,11 @@ public sealed class AddItemCommandHandler : IRequestHandler<AddItemCommand, AddI
             Price = request.Price,
         };
 
-        await _context.Items.AddAsync(newItem);
+        _context.Items.AddAsync(newItem, cancellationToken);
 
-        await _context.SaveChangesAsync(cancellationToken);
+        _context.SaveChangesAsync(cancellationToken);
 
-        return new AddItemCommandResponse(newItem.Id, newItem.Name, newItem.Description, newItem.Price);
+        return Task.FromResult(new AddItemCommandResponse(newItem.Id, newItem.Name, newItem.Description,
+          newItem.Price));
     }
 }
