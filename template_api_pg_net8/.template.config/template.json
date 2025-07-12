@@ -1,16 +1,22 @@
 {
   "$schema": "http://json.schemastore.org/template",
-  "author": "Template Api Postgres Net8",
+  "author": "Wengwalker",
   "classifications": [ "Solution", "C#", "Web" ],
-  "identity": "Template.WebApi.Postgresql",
-  "name": "For test projects template",
+  "identity": "Template.WebApi.Pg.Net8",
+  "name": "Template Api-Postgres-Net8",
   "shortName": "webapi-pg-net8",
+  "sourceName": "customTemplate",
   "preferNameDirectory": true,
   "tags": {
     "language": "C#",
     "type": "solution"
   },
   "sources": [{
-    "exclude": [ "**/bin/", "**/obj/", "**/.vs/" ]
+    "exclude": [
+      "**/bin/*", 
+      "**/obj/*",
+      "**/.vs/*",
+      ".template.config/*"
+    ]
   }]
 }

@@ -1,6 +1,7 @@
 ﻿using Api.Domain.DTOs;
 using Api.Infrastructure.Data.Contexts;
 using Api.Infrastructure.MediatR.Interfaces;
+using Microsoft.EntityFrameworkCore;
 
 namespace Api.Application.Queries.GetItems;
 
@@ -13,9 +14,9 @@ public sealed class GetItemsQueryHandler : IRequestHandler<GetItemsQuery, GetIte
         _context = context;
     }
 
-    public Task<GetItemsQueryResponse> Handle(GetItemsQuery request, CancellationToken cancellationToken)
+    public async Task<GetItemsQueryResponse> Handle(GetItemsQuery request, CancellationToken cancellationToken)
     {
-        var itemsList = _context.Items
+        var itemsList = await _context.Items
             .Select(x => new ItemDto
             {
                 Id = x.Id,
@@ -23,8 +24,8 @@ public sealed class GetItemsQueryHandler : IRequestHandler<GetItemsQuery, GetIte
                 Description = x.Description,
                 Price = x.Price,
             })
-            .ToList();
+            .ToListAsync(cancellationToken);
 
-        return Task.FromResult(new GetItemsQueryResponse(itemsList));
+        return new GetItemsQueryResponse(itemsList);
     }
 }
