@@ -1,4 +1,4 @@
-﻿using Api.Infrastructure.MediatR.Interfaces;
+﻿using Mediator.Lite.Interfaces;
 
 namespace Api.Application.Queries.GetItems;
 

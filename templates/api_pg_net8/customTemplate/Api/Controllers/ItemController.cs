@@ -1,7 +1,7 @@
 ﻿using Api.Api.DTOs;
 using Api.Application.Commands.AddItem;
 using Api.Application.Queries.GetItems;
-using Api.Infrastructure.MediatR.Interfaces;
+using Mediator.Lite.Interfaces;
 using Microsoft.AspNetCore.Mvc;
 
 namespace Api.Api.Controllers;

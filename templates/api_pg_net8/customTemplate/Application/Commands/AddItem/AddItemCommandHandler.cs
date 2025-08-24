@@ -1,8 +1,8 @@
 ﻿using Api.Api.Extensions;
 using Api.Domain.Entities;
 using Api.Infrastructure.Data.Contexts;
-using Api.Infrastructure.MediatR.Interfaces;
 using FluentValidation;
+using Mediator.Lite.Interfaces;
 
 namespace Api.Application.Commands.AddItem;
 

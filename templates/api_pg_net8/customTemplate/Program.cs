@@ -1,8 +1,8 @@
 using Api.Api.Extensions;
 using Api.Api.Middleware;
 using Api.Infrastructure.Data.Contexts;
-using Api.Infrastructure.MediatR.Extensions;
 using FluentValidation;
+using Mediator.Lite.Extensions;
 using Microsoft.EntityFrameworkCore;
 using System.Reflection;
 
@@ -21,7 +21,7 @@ builder.Services.AddDbContext<ItemsDbContext>(x => x
 
 builder.Services.AddValidatorsFromAssembly(Assembly.GetExecutingAssembly());
 
-builder.Services.AddMediator();
+builder.Services.AddMediator(Assembly.GetExecutingAssembly());
 
 builder.Services.AddProblemDetailsExtension();
 

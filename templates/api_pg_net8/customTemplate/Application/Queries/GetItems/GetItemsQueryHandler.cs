@@ -1,6 +1,6 @@
 ﻿using Api.Domain.DTOs;
 using Api.Infrastructure.Data.Contexts;
-using Api.Infrastructure.MediatR.Interfaces;
+using Mediator.Lite.Interfaces;
 using Microsoft.EntityFrameworkCore;
 
 namespace Api.Application.Queries.GetItems;
